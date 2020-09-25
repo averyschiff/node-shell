@@ -4,9 +4,13 @@ const cat = require("./cat");
 const curl = require("./curl");
 const date = require("./date");
 const echo = require("./echo");
+const head = require("./head");
+const tail = require("./tail");
+const sort = require("./sort");
+const wc = require("./wc");
+const uniq = require("./uniq");
 
 process.stdout.write("prompt > ");
-
 process.stdin.on("data", (data) => {
   const cmd = data.toString().trim().split(" ");
 
@@ -22,6 +26,16 @@ process.stdin.on("data", (data) => {
     date(done);
   } else if (cmd[0] === "echo") {
     echo(cmd[1], done);
+  } else if (cmd[0] === "head") {
+    head(cmd[1], done);
+  } else if (cmd[0] === "tail") {
+    tail(cmd[1], done);
+  } else if (cmd[0] === "sort") {
+    sort(cmd[1], done);
+  } else if (cmd[0] === "wc") {
+    wc(cmd[1], done);
+  } else if (cmd[0] === "uniq") {
+    uniq(cmd[1], done);
   }
 });
 
